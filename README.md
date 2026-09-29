@@ -41,6 +41,7 @@ youtube-trend-analysis/
 ├── requirements.txt
 ├── .gitignore
 └── README.md
+```
 ## Setup
 
 ### 1. Clone the Repository
