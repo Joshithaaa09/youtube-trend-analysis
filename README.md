@@ -1,59 +1,142 @@
-# YouTube Trend Analysis with CrewAI and BrightData
+# YouTube Trend Analysis with CrewAI and Ollama
 
-This project implements a YouTube Trend Analysis with CrewAI and BrightData.
-- [Bright Data](https://brdta.com/dailydoseofds) is used to scrape YouTube videos.
-- CrewAI is used to analyze the transcripts of the videos and generate a summary.
-- Streamlit is used to create a web interface for the project.
+An AI-powered YouTube Trend Analysis application built with **Python, Streamlit, CrewAI, yt-dlp, YouTube Transcript API, and Ollama**.
 
+The application collects videos from YouTube channels, extracts their transcripts, and uses CrewAI agents with a local Ollama model to identify topics, trends, sentiment, recurring keywords, and other insights.
 
----
-## Setup and installations
+## Features
 
-**Get BrightData API Key**:
-- Go to [Bright Data](https://brdta.com/dailydoseofds) and sign up for an account.
-- Once you have an account, go to the API Key page and copy your API key.
-- Paste your API key by creating a `.env` file as follows:
+- Collect videos from YouTube channels
+- Filter videos by date range
+- Extract YouTube transcripts
+- Analyze key topics and themes
+- Identify emerging trends and patterns
+- Analyze speaker sentiment and tone
+- Extract recurring keywords and phrases
+- Generate structured AI-powered analysis
+- Display extracted YouTube videos in the Streamlit interface
+- Download the generated analysis as a Markdown file
+- Run AI analysis locally using Ollama
+- No OpenAI API key required
+- No Bright Data API key required
 
-```
-BRIGHT_DATA_API_KEY=your_api_key
-```
+## Tech Stack
 
-**Setup Ollama**:
-   ```bash
-   # setup ollama on linux 
-   curl -fsSL https://ollama.com/install.sh | sh
-   # pull llama 3.2 model
-   ollama pull llama3.2 
-   ```
+- **Python** — Application development
+- **Streamlit** — Web interface
+- **CrewAI** — AI agent orchestration
+- **Ollama** — Local LLM runtime
+- **Llama 3.2:1b** — Local language model
+- **yt-dlp** — YouTube video collection
+- **YouTube Transcript API** — Transcript extraction
+- **PyYAML** — Configuration management
 
+## Project Structure
 
-**Install Dependencies**:
-   Ensure you have Python 3.11 or later installed.
-   ```bash
-   pip install streamlit ollama crewai crewai-tools
-   ```
+```text
+youtube-trend-analysis/
+├── app.py
+├── brightdata_scrapper.py
+├── config.yaml
+├── requirements.txt
+├── .gitignore
+└── README.md
+## Setup
 
----
-
-## Run the project
-
-Finally, run the project by running the following command:
+### 1. Clone the Repository
 
 ```bash
+git clone YOUR_REPOSITORY_URL
+cd youtube-trend-analysis
+
+###2. Create a Virtual Environment
+
+Windows:
+
+python -m venv .venv
+.venv\Scripts\activate
+
+macOS/Linux:
+
+python3 -m venv .venv
+source .venv/bin/activate
+
+###3. Install Dependencies
+
+Make sure Python 3.11 or later is installed.
+
+pip install -r requirements.txt
+
+###4. Setup Ollama
+
+Install Ollama and make sure the Ollama service is running.
+
+Pull the model used by this project:
+
+ollama pull llama3.2:1b
+
+The application uses the local:
+
+llama3.2:1b
+
+
+Run the Project
+
+Start the Streamlit application:
+
 streamlit run app.py
-```
 
+The application will open in your browser.
 
+**How It Works**
+1.Enter one or more YouTube channel URLs.
+2.Select the desired date range.
+3.Start the analysis.
+4.collects the relevant YouTube videos.
+5.Video transcripts are processed and stored temporarily.
+6.CrewAI agents analyze the transcripts using the local Ollama model.
+7.The analysis identifies:
+      -Key topics and themes
+      -Emerging trends and patterns
+      -Speaker sentiment and tone
+      -Recurring keywords and phrases
+8.A structured analysis is displayed in the Streamlit interface.
+9.The generated analysis can be downloaded as a Markdown file.
+**AI Agents**
+**Transcript Analysis Agent**
 
----
+Analyzes the collected transcripts and identifies:
 
-## 📬 Stay Updated with Our Newsletter!
-**Get a FREE Data Science eBook** 📖 with 150+ essential lessons in Data Science when you subscribe to our newsletter! Stay in the loop with the latest tutorials, insights, and exclusive resources. [Subscribe now!](https://join.dailydoseofds.com)
+-Key topics
+-Emerging trends
+-Speaker sentiment
+-Recurring keywords and phrases
+**Response Synthesizer Agent**
 
-[![Daily Dose of Data Science Newsletter](https://github.com/patchy631/ai-engineering/blob/main/resources/join_ddods.png)](https://join.dailydoseofds.com)
+Combines the detailed analysis into a concise and structured report with clear findings and actionable insights.
 
----
+**Configuration**
 
-## Contribution
+Agent roles, goals, backstories, tasks, and expected outputs are defined in:
 
-Contributions are welcome! Please fork the repository and submit a pull request with your improvements.
+config.yaml
+
+This keeps the AI workflow configuration separate from the application code.
+
+**Requirements**
+Python 3.11 or later
+Ollama
+Llama 3.2:1b
+Bright Data 
+Internet connection for youtube data collection
+
+**Contribution**
+
+Contributions and improvements are welcome.
+
+1.Fork the repository.
+2.Create a new branch.
+3.Make your changes.
+4.Test the application.
+5.Submit a pull request.
+
