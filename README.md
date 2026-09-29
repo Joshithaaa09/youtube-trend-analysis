@@ -49,6 +49,7 @@ youtube-trend-analysis/
 ```bash
 git clone YOUR_REPOSITORY_URL
 cd youtube-trend-analysis
+```
 
 ###2. Create a Virtual Environment
 
