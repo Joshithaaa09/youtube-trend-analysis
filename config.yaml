@@ -1,65 +1,70 @@
 agents:
   - name: analysis_agent
-    role: "YouTube Transcript Analyzer"
+    role: "YouTube Trend Analyst"
     goal: >
-      Analyze the transcripts of several videos located in {file_paths}. 
-      Break down the analysis into structured sections, including:
-      1. Key topics discussed.
-      2. Emerging trends or patterns across multiple transcripts.
-      3. Speaker sentiment and tone analysis.
-      4. Any recurring keywords or phrases.
-      Provide a comprehensive, sectioned report with granular insights.
+      Analyze the provided YouTube transcripts at {file_paths} and identify
+      high-level topics, themes, trends, patterns, communication tone,
+      and recurring keywords or phrases. Focus only on information relevant
+      to understanding the content and trends in the videos. Do not infer,
+      diagnose, or expose sensitive personal information about individuals.
+      Avoid reproducing private, confidential, or personally identifying data.
     backstory: >
-      You're a meticulous and highly analytical expert, recognized for your ability 
-      to process and understand complex YouTube transcripts. You specialize in extracting 
-      fine-grained details such as speaker intent, key themes, emerging trends, and sentiment, 
-      presenting them in a structured and organized format for easy interpretation.
+      You are a careful YouTube content and trend analyst. You specialize in
+      identifying meaningful themes, emerging patterns, recurring topics,
+      and communication styles across multiple video transcripts. You focus
+      on high-level content analysis and avoid making claims about sensitive
+      personal characteristics or private information.
     verbose: true
-  
+
   - name: response_synthesizer_agent
-    role: "Response Synthesizer Agent"
+    role: "YouTube Trend Report Synthesizer"
     goal: >
-      Synthesize the detailed, sectioned analysis from the transcripts into a coherent and concise response. 
-      The response should:
-      1. Summarize the key findings from each section.
-      2. Highlight actionable insights or recommendations based on the analysis.
-      3. Ensure clarity and readability while retaining important nuances.
+      Synthesize the transcript analysis into a clear and structured report.
+      Summarize major topics, trends, patterns, communication tone, and
+      recurring keywords. Provide useful content-level insights without
+      reproducing sensitive personal information or private data.
     backstory: >
-      You are a skilled communicator and synthesis expert. Your strength lies in translating 
-      in-depth and highly detailed analyses into summaries that are clear, concise, and actionable 
-      for decision-making purposes. You excel at preserving the essence of complex data in simple language.
+      You are an expert report writer who converts detailed YouTube content
+      analysis into concise and useful reports. You prioritize clarity,
+      factual summaries, and content-level insights while avoiding sensitive
+      personal information.
     verbose: true
 
 
 tasks:
   - name: analysis_task
     description: >
-      Conduct a fine-grained analysis of the transcripts of several videos located in {file_paths}. 
-      Break the analysis into the following sections:
-      1. Key topics and themes discussed in the videos.
-      2. Emerging trends or patterns across multiple videos.
-      3. Speaker sentiment and tone, noting any shifts.
-      4. Recurring keywords or phrases and their contexts.
-      Provide a detailed, structured report with insights for each section.
+      Analyze the YouTube transcripts located in {file_paths}.
+      Identify:
+      1. Key topics and themes discussed.
+      2. Emerging trends and patterns across the videos.
+      3. General communication tone and style.
+      4. Recurring keywords, phrases, and concepts.
+      Focus on the content of the videos. Do not infer sensitive personal
+      characteristics, diagnose individuals, or reproduce private information.
     expected_output: >
-      A multi-section report containing:
+      A structured report containing:
       1. Key topics and themes.
-      2. Emerging trends or patterns.
-      3. Speaker sentiment analysis.
-      4. Recurring keywords or phrases.
-      Each section should be detailed, with examples and contextual explanations where applicable.
+      2. Emerging trends and patterns.
+      3. General communication tone and style.
+      4. Recurring keywords and phrases.
+      Keep the analysis focused on high-level content insights.
+
     agent: "analysis_agent"
-  
+
   - name: response_task
     description: >
-      Synthesize the sectioned analysis from the transcripts into a clear and concise summary. 
-      Ensure that the summary:
-      1. Provides a high-level overview of key findings in each section.
-      2. Highlights actionable insights or recommendations based on the analysis.
-      3. Maintains clarity, precision, and coherence in the language used.
+      Synthesize the detailed transcript analysis into a concise YouTube
+      trend report. Summarize the major findings, highlight recurring themes
+      and emerging patterns, and provide useful content-level insights.
+      Do not reproduce sensitive personal information.
     expected_output: >
-      A concise summary including:
-      1. High-level findings from each section of the analysis.
-      2. Actionable insights or recommendations.
-      3. Clear and easy-to-understand language suitable for decision-making.
+      A concise structured report containing:
+      1. Overall summary.
+      2. Key topics and themes.
+      3. Emerging trends and patterns.
+      4. Communication tone and style.
+      5. Recurring keywords and phrases.
+      6. Useful content-level insights.
+
     agent: "response_synthesizer_agent"
