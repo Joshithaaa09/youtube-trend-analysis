@@ -44,7 +44,7 @@ The application collects videos from YouTube channels, extracts their transcript
 ```text
 youtube-trend-analysis/
 ├── app.py
-├── brightdata_scrapper.py
+├── youtube_scrapper.py
 ├── config.yaml
 ├── requirements.txt
 ├── .gitignore
