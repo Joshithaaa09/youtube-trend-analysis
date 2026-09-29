@@ -78,7 +78,7 @@ def create_agents_and_tasks():
 # ===========================
 
 st.title("YouTube Trend Analysis")
-st.caption("Powered by CrewAI, Bright Data, Streamlit, and Ollama")
+st.caption("Powered by CrewAI, Streamlit, and Ollama")
 
 
 if "messages" not in st.session_state:
@@ -391,5 +391,5 @@ if st.session_state.response:
 st.markdown("---")
 
 st.markdown(
-    "Built with CrewAI, Bright Data, Streamlit, and Ollama"
+    "Built with CrewAI, Streamlit, and Ollama"
 )
