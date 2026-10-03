@@ -16,13 +16,18 @@ docs_tool = FileReadTool()
 
 @st.cache_resource
 def load_llm():
-    llm = LLM(
-        model="ollama/llama3.2:1b",
-        base_url="http://localhost:11434"
-    )
+    if os.getenv("GEMINI_API_KEY"):
+        llm = LLM(
+            model="gemini/gemini-2.5-flash",
+            api_key=os.getenv("GEMINI_API_KEY")
+        )
+    else:
+        llm = LLM(
+            model="ollama/llama3.2:1b",
+            base_url="http://localhost:11434"
+        )
 
     return llm
-
 
 # ===========================
 # Define Agents & Tasks
