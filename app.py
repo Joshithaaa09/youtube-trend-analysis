@@ -14,6 +14,7 @@ from crewai_tools import FileReadTool
 docs_tool = FileReadTool()
 
 
+
 @st.cache_resource
 def load_llm():
     if os.getenv("GEMINI_API_KEY"):
