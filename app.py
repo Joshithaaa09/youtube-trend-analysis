@@ -19,7 +19,7 @@ docs_tool = FileReadTool()
 def load_llm():
     if os.getenv("GEMINI_API_KEY"):
         llm = LLM(
-            model="gemini/gemini-2.5-flash",
+            model="gemini/gemini-3.8-flash",
             api_key=os.getenv("GEMINI_API_KEY")
         )
     else:
